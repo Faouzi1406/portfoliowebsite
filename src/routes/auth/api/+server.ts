@@ -2,19 +2,6 @@ import { AuthGetUser, AuthUserCreation, AuthUserSession } from '../../../classes
 import type { AuthCreateUser, AuthGet, AuthUserFound, AuthUserOk, AuthUserSessionOk } from '../../../types/AuthResponses';
 import * as cookie from 'cookie';
 
-export const PATCH = async (event:any) => {
-  const userInfo = await event.request.json();
-  const token = userInfo.token;
-
-  const getSession = new AuthUserSession();
-  const isAuth:AuthUserSessionOk = await getSession.checkSession(token);
-  console.log("hello");
-  
-  return new Response(
-    JSON.stringify(isAuth)
-  );
-}
-
 export const POST   = async (event:any) => {  
   const userInfo = await event.request.formData();
   const userName = userInfo.get('username');
@@ -31,14 +18,13 @@ export const POST   = async (event:any) => {
     {
       headers: {
         'location':'/adminpage',
-        'Set-Cookie': cookie.serialize('session_id', getUserInfo.session.token, {
+        'Set-Cookie': cookie.serialize('session_id', getUserInfo.session.token || '', {
           httpOnly: true,
           maxAge: 60 * 60 * 24 * 7,
           sameSite: 'strict',
           path: '/'
         },),
       },
-
       status: 302
     }
   )
@@ -51,7 +37,8 @@ export const POST   = async (event:any) => {
       {
         headers: {
           'location': '/auth/login',
-        }
+        },
+      status: 302
       })
   }
 }
