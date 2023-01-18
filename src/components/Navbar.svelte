@@ -1,6 +1,7 @@
 <script lang="ts">
   export let isLoggedIn:boolean;
   export let userName:string;
+  export let role:number;
 </script>
 
 <nav class="py-4 flex items-center px-5">
@@ -9,14 +10,19 @@
 </div>
 <div class="gap-5 text-lg hidden lg:flex md:flex items-center">
     <a class="select-none ">Blog</a> 
-    <a class="select-none">Projects</a> 
+    <a class="select-none" href="/projects">Projects</a> 
     {#if !isLoggedIn }
-      <a href="/auth/login">Login</a>
+      <a href="/auth/login" class="border border-black dark:border-white rounded px-3 py-1 font-semibold">Login</a>
       {:else}
-      <a href="/auth/logout">Logout</a>
+      <a href="/auth/logout" data-sveltekit-preload-data="tap" data-sveltekit-reload>Logout</a>
       <p>({ userName })</p>
     {/if}
-    <a href="https://github.com/Faouzi1406"><img src="/githubIcon.svg" alt="github icon" class="w-10 border p-1 rounded-full bg-white"/></a>
+    
+    {#if role == 1}
+      <a href="/adminpage">
+      <img src="/adminIcons.png" alt="admin" class="w-10 aspect-square rounded-full shadow-md border bg-white"/>
+      </a>
+    {/if}
 </div>
 <div class="flex md:hidden lg:hidden">
 <div class="dropdown dropdown-end">
@@ -31,7 +37,7 @@
     {#if !isLoggedIn }
       <li><a href="/auth/login">Login</a></li>
       {:else}
-      <li><a href="/auth/logout">Logout</a></li>
+      <li><a href="/auth/logout" data-sveltekit-reload >Logout</a></li>
       <li><p>({ userName })</p></li>
     {/if}
   </ul>

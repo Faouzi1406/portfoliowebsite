@@ -13,9 +13,7 @@
     repoOwner:owner
   };
 
-
-    const fetchOk:string = '';
-    
+  const fetchOk:string = '';
 
   export let gitInfo:githubData;
   let fetchData:RepoInformation = {

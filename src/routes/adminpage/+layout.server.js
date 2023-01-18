@@ -13,12 +13,16 @@ export const load = async ({ cookies }) => {
 
   getUser()
 
+
+  if(!user.isValidated || user.role != 1) throw redirect(302, '/auth/login');
+
   //github Repo's 
   const getRepos = async () => {
     const github = new Github(); 
     const allRepos = await github.allPubRepos('Faouzi1406');
     return allRepos;
   }
+
 
   return {
     gitRepos:getRepos()

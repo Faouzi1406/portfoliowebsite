@@ -39,5 +39,6 @@ export type AuthUserFound = {
 
 export type AuthUserSessionOk = {
   userName?:string,
+  role?:number
   isValidated:boolean
 }

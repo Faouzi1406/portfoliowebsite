@@ -11,7 +11,7 @@
 </script>
 
 <div class="h-screen">
-    <Navbar isLoggedIn={user.isValidated} userName={ user.userName || '' }/>
+    <Navbar isLoggedIn={user.isValidated} userName={ user.userName || '' } role={ user.role || 0 }/>
     
     <div class="flex items-center justify-center py-2">
     <div class="grid gap-4 grid-cols-1  md:grid-cols-2 lg:grid-cols-2  auto-cols-max">
