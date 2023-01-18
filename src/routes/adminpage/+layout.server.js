@@ -12,7 +12,7 @@ export const load = async ({ cookies }) => {
   const github = new Github(); 
   const allRepos = await github.allPubRepos('Faouzi1406');
 
-  if(!user.isValidated) throw redirect(302, '/auth/login');
+  if(!user.isValidated || user.role != 1) throw redirect(302, '/auth/login');
 
   return {
     user:user,

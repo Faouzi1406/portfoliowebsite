@@ -7,5 +7,5 @@ export const load = async ({ cookies }) => {
   const userSession = new AuthUserSession(); 
   let user = await userSession.checkSession(sessionid || '');
 
-  if(user.isValidated) throw redirect(302, '/adminpage');
+  if(user.isValidated) throw redirect(302, '/');
 }

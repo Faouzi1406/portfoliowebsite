@@ -8,6 +8,9 @@
 </script>
 
 <div class="h-screen">
-  <Navbar isLoggedIn={ user.isValidated } userName={ user.userName || '' }/>
+  <Navbar 
+  isLoggedIn={ user.isValidated } 
+  userName={ user.userName || '' } 
+  role={ user.role || 0 }/>
   <IndexBody />
 </div>

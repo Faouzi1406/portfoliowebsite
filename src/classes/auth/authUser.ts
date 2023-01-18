@@ -13,6 +13,9 @@ export class AuthUserSession {
       isValidated:false,
     }
     const checkSession  = await prisma.sessions.findUnique({
+      include:{
+      user:true
+      },
       where:{
         token:sessionToken
       }
@@ -20,6 +23,7 @@ export class AuthUserSession {
       if(e?.userName != undefined){
         user.isValidated = true;
         user.userName = e.userName;
+        user.role = e.user.role;
       }
       prisma.$disconnect();
     }).catch(e => {
