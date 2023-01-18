@@ -3,7 +3,7 @@
   import LoginForm from "./LoginForm.svelte";
 </script>
 
-<div class="w-[100vw] h-[100vh]" data-theme="cupecake">
+<div class="w-[100vw] h-[100vh]">
   <Navbar isLoggedIn={ false } />
   <LoginForm />
 </div>

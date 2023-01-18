@@ -30,14 +30,14 @@ export const POST   = async (event:any) => {
   )
   }
   else{
-    new Response(
+    return new Response(
       JSON.stringify({
         sessionCreated: false
       }),
       {
-        headers: {
-          'location': '/auth/login',
-        },
+      headers: {
+        'location': '/auth/login',
+      },
       status: 302
       })
   }

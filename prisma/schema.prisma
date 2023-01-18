@@ -29,6 +29,8 @@ model Sessions {
 }
 
 model ProjectsGit {
- id           Int @id @default(autoincrement())
- projectName  String @unique
+ id             Int @id @default(autoincrement())
+ projectName    String @unique
+ projectDesc    String 
+ projectAvatar  String
 }

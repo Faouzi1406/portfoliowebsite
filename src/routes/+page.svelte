@@ -7,7 +7,7 @@
     const user:AuthUserSessionOk = data.user;
 </script>
 
-<div class="h-screen" data-theme="cupcake">
-  <Navbar isLoggedIn={ user.isValidated } />
+<div class="h-screen">
+  <Navbar isLoggedIn={ user.isValidated } userName={ user.userName || '' }/>
   <IndexBody />
 </div>
