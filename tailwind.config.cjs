@@ -18,6 +18,6 @@ module.exports = {
     rtl: false,
     prefix: "",
     light:"lofi",
-    darkTheme: "night",
+    darkTheme: "lofi",
   },
 };

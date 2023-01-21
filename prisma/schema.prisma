@@ -33,4 +33,5 @@ model ProjectsGit {
  projectName    String @unique
  projectDesc    String 
  projectAvatar  String
+ projectDate    DateTime @default(now())
 }

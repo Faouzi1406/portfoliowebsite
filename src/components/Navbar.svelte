@@ -12,7 +12,7 @@
     <a class="select-none ">Blog</a> 
     <a class="select-none" href="/projects">Projects</a> 
     {#if !isLoggedIn }
-      <a href="/auth/login" class="border border-black dark:border-white rounded px-3 py-1 font-semibold">Login</a>
+      <a href="/auth/login" class="border border-black  rounded px-3 py-1 font-semibold">Login</a>
       {:else}
       <a href="/auth/logout" data-sveltekit-preload-data="tap" data-sveltekit-reload>Logout</a>
       <p>({ userName })</p>

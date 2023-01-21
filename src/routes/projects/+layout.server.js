@@ -5,6 +5,6 @@ export const load = async () => {
   let allProjects = await projects.getAll();
 
   return {
-    allProjects
+    projects:allProjects
   }
 }
