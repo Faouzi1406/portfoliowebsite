@@ -43,3 +43,4 @@ on:input={searchProject}
     <Projects projects={ project }  />
   {/each}
 </div>
+

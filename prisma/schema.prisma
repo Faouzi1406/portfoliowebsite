@@ -34,4 +34,6 @@ model ProjectsGit {
  projectDesc    String 
  projectAvatar  String
  projectDate    DateTime @default(now())
+ projectReadme  String 
+ projectThumb   String
 }
