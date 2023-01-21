@@ -8,19 +8,20 @@ export class MyProjects {
     return allProjects;
   }
   
-  async getProject(id:number) {
+  async getProject(this_id:number) {
     let prisma = new PrismaClient();
     let project = prisma.projectsGit.findUnique({
       where: {
-        id
+        id:this_id
       }
     })
 
     let data;
     
-    project.then(e => {
+    await project.then(e => {
       data = e;
     }).catch(e => {
+      console.log(e);
         data = { project: "not found" };
     })
 

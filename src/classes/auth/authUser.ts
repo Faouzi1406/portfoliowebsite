@@ -27,7 +27,6 @@ export class AuthUserSession {
       }
       prisma.$disconnect();
     }).catch(e => {
-      console.log(e);
       user.isValidated = false;
       prisma.$disconnect();
     });

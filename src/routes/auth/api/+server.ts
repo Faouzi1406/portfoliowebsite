@@ -54,7 +54,6 @@ export const PUT  = async (event:any) => {
   
   const createUser = new AuthUserCreation(userForm);
   const created:AuthUserOk = await createUser.createUser();
-  console.log("wow");
   
   return new Response(
     JSON.stringify({

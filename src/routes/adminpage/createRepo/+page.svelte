@@ -35,7 +35,6 @@
         });
       let jsonSave = await saving.json();
       isOk = isOk.isOk;
-      console.log(jsonSave);
   }
 
 </script>

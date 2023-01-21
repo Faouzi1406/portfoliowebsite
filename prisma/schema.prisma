@@ -29,7 +29,7 @@ model Sessions {
 }
 
 model ProjectsGit {
- id             Int @id @default(autoincrement())
+ id             Int @id @default(autoincrement()) @unique
  projectName    String @unique
  projectDesc    String 
  projectAvatar  String

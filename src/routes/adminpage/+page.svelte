@@ -4,7 +4,6 @@
 
     export let data;
     const user:AuthUserSessionOk = data.user;
-    console.log(data);
 </script>
 
 <div class="h-screen">

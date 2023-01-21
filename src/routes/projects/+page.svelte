@@ -16,7 +16,6 @@
    //If search on name is 0 search based on project description
     if(searchProjects.length == 0 ){
      searchProjects =  projects.filter(x => x.projectDesc.toLowerCase().match(searchQuery.toLowerCase()))
-     console.log(true);
     }
   }
 </script>
