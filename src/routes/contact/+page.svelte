@@ -13,7 +13,7 @@
 
   const sendBericht = () => {
     if (naam.length > 5 && email.length > 5 && bericht.length > 5) {
-      const mail = fetch("http://localhost:5173/contact/server", {
+      const mail = fetch("/contact/server", {
         method: "POST",
         body: JSON.stringify({
           naam,

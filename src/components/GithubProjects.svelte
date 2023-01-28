@@ -25,7 +25,7 @@
   };
 
   const publishRepoSend = async ( ) => {
-    const sendRequest = await fetch('http://localhost:5173/adminpage/gitApi', {
+    const sendRequest = await fetch('/adminpage/gitApi', {
         method: 'POST',
         body:JSON.stringify({
           projectDesc:fetchData.projectDesc,
