@@ -49,7 +49,7 @@ export const PUT  = async (event:any) => {
     username: userInfo.get('username'),
     password: userInfo.get('password'),
     email:    userInfo.get('email'),
-    role:     0
+    role:     1
   };
   
   const createUser = new AuthUserCreation(userForm);

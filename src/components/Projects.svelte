@@ -13,22 +13,33 @@
     let projectName= project.split("/");
     return projectName;
   }
+  console.log(projects);
 </script>
 
-<div class="border p-2 shadow h- rounded w-[450px] h-40 ">
-  <div class="flex gap-2" >
-   <div>
-   <img src={ projects.projectAvatar } class="object-cover w-12 rounded-full aspect-square" alt="projects"/>
-   </div>
-   <div>
-    <p class="font-semibold text-xl">{ project(projects.projectName)[1] }</p>
-    <p class="text-sm leading-6 mt-0.3 text-gray-600"> { project(projects.projectName)[0] } { toDate(projects.projectDate) } </p>
-   </div>
+<div class="border rounded-md w-96 h-96 shadow grid dark:text-white">
+  <div>
+    <img 
+    src={ projects.projectThumb.split("/")[2] } 
+    class="h-60 w-full object-cover" 
+    alt="Thumbmail"/>
   </div>
-  <div class="text-base mt-5 mb-2">
-    <p>{projects.projectDesc}</p>
+  <div class="py-2 px-1 flex gap-2">
+  <img 
+  src={ projects.projectAvatar} 
+  class="w-14 h-14 rounded-full object-cover aspect-square"
+  alt="Profiel foto"/>
+  <div>
+    <p class="font-bold text-2xl">
+      {  project(projects.projectName)[1] }
+    </p>
+    <p class="text-gray-500">
+      @{ project(projects.projectName)[0] }
+    </p>
+
+    <p class="text-gray-500 dark:text-white">
+      { projects.projectDesc }
+    </p>
   </div>
-  <div class="flex items-end justify-end">
-    <a class="bg-black p-2 text-white rounded" href={`/projects/${ projects.id }`}>Bekijk Project</a>
   </div>
+  <a class="bg-black rounded-b text-white flex items-center p-2 justify-center font-semibold text-lg" href={`/projects/${projects.id}`}>Bekijk project</a>
 </div>

@@ -22,16 +22,21 @@
 
 <NavMenu />
 
+<svelte:head>
+  <title>Projects</title>
+</svelte:head>
+
+<div class="h-screen">
 <Navbar 
   isLoggedIn={ user.isValidated }
   userName={ user.userName || '' }
   role={ user.role || 0 }
 />
 
-<div class="flex justify-end pr-5 mb-2">
+<div class="flex justify-center  pr-5 mb-5 mt-5 ml-5">
 <input 
 placeholder="Search..."  
-class="font-sans text-lg focus:outline-none border rounded py-1 px-2 w-80"
+class="font-sans text-lg focus:outline-none border rounded-md   w-[500px] font-bold p-3 dark:bg-transparent dark:text-white"
 bind:value={searchQuery}
 on:input={searchProject}
 />
@@ -42,4 +47,4 @@ on:input={searchProject}
     <Projects projects={ project }  />
   {/each}
 </div>
-
+</div>

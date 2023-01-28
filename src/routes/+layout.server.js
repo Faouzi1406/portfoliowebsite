@@ -1,5 +1,6 @@
 import { redirect } from '@sveltejs/kit';
 import { AuthUserSession } from '../classes/auth/authUser';
+import { MyProjects } from '../classes/github/MyProjects';
  
 /** @type {import('./$types').LayoutServerLoad} */
 export const load = async ({ cookies }) => {
@@ -10,7 +11,9 @@ export const load = async ({ cookies }) => {
     return user;
   }
 
+  const getProject = new MyProjects();
   return {
-    user:user()
+    user:user(),
+    projects:Promise.resolve(getProject.getAll())
   }
 }

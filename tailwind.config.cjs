@@ -18,7 +18,5 @@ module.exports = {
     logs: true,
     rtl: false,
     prefix: "",
-    light:"lofi",
-    darkTheme: "lofi",
   },
 };

@@ -1,17 +1,67 @@
 <script>
-    import Navbar from "../../../components/Navbar.svelte";
+  import Navbar from "../../../components/Navbar.svelte";
+  import SvelteMarkdown from "svelte-markdown";
 
   export let data;
-  let user = data.user;
-  console.log(data);
+  const user = data.user;
+  const projects = data.currentProject;
+  const source = projects.projectReadme;
+  console.log(projects);
 </script>
 
-<Navbar 
-  isLoggedIn={ user.isValidated }
-  userName={ user.userName || '' }
-  role={ user.role || 0 }
+<svelte:head>
+  <title>
+    {projects.projectName.split("/")[1]} - {projects.projectName.split("/")[0]}
+  </title>
+</svelte:head>
+
+<Navbar
+  isLoggedIn={user.isValidated}
+  userName={user.userName || ""}
+  role={user.role || 0}
 />
 
-<article>
+<div class="relative">
+  {#if user.role == 1}
+    <a
+      class="border h-fit py-2 px-4 btn-outline rounded-md top-5  w-fit absolute left-5"
+      href={ `/projects/edit/${projects.id}` }
+    >
+      Edit
+    </a>
+  {/if}
+</div>
 
-</article>
+<div class="flex justify-center  h-screen">
+  <article class="w-full md:w-3/3 border-x">
+    <div class="relative">
+      <img
+        src={`../${projects.projectThumb.split("/")[2]}`}
+        class="w-full h-[500px] object-cover"
+        alt="Thumbmail"
+      />
+
+      <div
+        class="absolute bottom-0 text-white w-full backdrop-blur-xl bg-black/30 p-2 flex"
+      >
+        <h1 class="text-3xl first-letter:capitalize">
+          {projects.projectName.split("/")[1]}
+        </h1>
+        <div class="absolute right-0 flex items-center gap-2">
+          <img
+            src={projects.projectAvatar}
+            class="w-10 rounded-full border"
+            alt="profiel foto"
+          />
+          <p class=" mr-5 first-letter:capitalize">
+            {projects.projectName.split("/")[0]}
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="py-2 px-2  prose max-w-full text-white">
+      <SvelteMarkdown {source} />
+    </div>
+  </article>
+</div>
