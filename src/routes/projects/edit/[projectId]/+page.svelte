@@ -22,6 +22,9 @@
 
   let cur_project = '/' + currentProject.projectThumb.split("/")[1];
 
+
+  let blob:string | null = null;
+
   const to_blob = () => {
     const fileReader = new FileReader();
     fileReader.readAsDataURL(currentProject.projectThumb[0]);
@@ -29,11 +32,11 @@
 
     fileReader.onload = (e)  => {
      currentProject.projectThumb =  e.target?.result.split(",")[1];
+     blob = e.target?.result;
     }
   }
 
-  $: console.log(currentProject.projectName);
-  
+  $: console.log(blob)
 
   const openImageSelect = () => {
     let open = document.querySelector("#openFile");
@@ -50,11 +53,19 @@
 <div class="px-3 ">
   <div class="w-full flex items-center relative flex-col ">
   <input type="file" accept="image/png, image/jpg" class="hidden" bind:files={ currentProject.projectThumb }  id="openFile" on:change={ to_blob }/>
+    {#if blob == null}
     <img
       src={`http://localhost:3000/getfile${ cur_project }`}
       class="w-full aspect-square h-52 object-cover"
       on:click={ openImageSelect }
     />
+    {:else}
+    <img
+      src={ blob }
+      class="w-full aspect-square h-52 object-cover"
+      on:click={ openImageSelect }
+    />
+    {/if}
     <div class="absolute bottom-0 backdrop-blur-0 bg-white/30 w-full p-2">
       <input bind:value={currentProject.projectName} class="p-1 input border" />
     </div>

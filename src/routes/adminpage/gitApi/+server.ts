@@ -32,13 +32,22 @@ export const POST = async (event:any) => {
     return new Response("unauthorized")
   }
 
-  writeFileSync(`client/${ repoForm.projectName.split("/")[1] }.jpg`, repoForm.projectThumb, 'base64' );
+   const sendFile = await fetch("http://localhost:3000/uploadFile", {
+    method:'POST',
+    body: JSON.stringify({
+      "FileName": `${ repoForm.projectName.split("/")[1] }.jpg`,
+      "FileBlob": repoForm.projectThumb
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
   
-  const repoData:RepoInformation = {
+  const repoData = {
     projectName:    repoForm.projectName,
     projectAvatar:  repoForm.projectAvatar,
     projectDesc:    repoForm.projectDesc,
-    projectThumb:   `static/${ repoForm.projectName }.jpg`,
+    projectThumb:   `${ repoForm.projectName }.jpg`,
     readMe:         repoForm.readMe
   }
 
@@ -92,9 +101,6 @@ export const PUT = async (event:any) => {
       'Content-Type': 'application/json'
     }
   });
-
-
-  console.log(await sendFile.json());
   
   const repoData = {
     projectId:      repoForm.id,
