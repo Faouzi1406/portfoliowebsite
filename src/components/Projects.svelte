@@ -13,7 +13,6 @@
     let projectName= project.split("/");
     return projectName;
   }
-  console.log(projects);
 </script>
 
 <div class="border rounded-md w-96 h-96 shadow grid dark:text-white">

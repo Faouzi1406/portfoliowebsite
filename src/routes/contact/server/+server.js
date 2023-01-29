@@ -45,9 +45,7 @@ export const POST  = async (event) => {
         params: {
             role: 'Wowwwww',
         },
-    }).catch( e => {
-    console.log(e); 
-    isOk=false}
+    }).catch( e => {isOk=false}
   );
 
   return new Response( 

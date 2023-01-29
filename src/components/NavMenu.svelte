@@ -57,7 +57,6 @@
     switch (e.key) {
       case "ƒ":
         if (window.screen.width >= 768) {
-        console.log(window.screen.width)
           searchShow = true;
           break;
         }

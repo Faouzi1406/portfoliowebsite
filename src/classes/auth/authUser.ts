@@ -172,10 +172,8 @@ export class AuthGetUser {
       sessionCreated.date     = e.date;
       sessionCreated.isValid  = e.isValid;
       sessionCreated.token    = e.token;
-      console.log(e)
       prisma.$disconnect();
     }).catch(e => {
-      console.log(e);
       prisma.$disconnect();
     });
 
