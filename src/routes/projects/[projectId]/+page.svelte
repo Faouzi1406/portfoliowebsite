@@ -33,10 +33,10 @@
 </div>
 
 <div class="flex justify-center  h-screen">
-  <article class="w-full md:w-3/3 border-x">
+  <article class="sm:w-full lg:w-2/3 md:w-3/3 border-x">
     <div class="relative">
       <img
-        src={`../${projects.projectThumb.split("/")[2]}`}
+        src={`http://localhost:3000/getfile/${projects.projectThumb.split("/")[1]}`}
         class="w-full h-[500px] object-cover"
         alt="Thumbmail"
       />
@@ -60,7 +60,7 @@
       </div>
     </div>
 
-    <div class="py-2 px-2  prose max-w-full text-white">
+    <div class="py-2 px-2  prose max-w-full text-black dark:text-white">
       <SvelteMarkdown {source} />
     </div>
   </article>

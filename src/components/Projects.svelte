@@ -19,7 +19,7 @@
 <div class="border rounded-md w-96 h-96 shadow grid dark:text-white">
   <div>
     <img 
-    src={ projects.projectThumb.split("/")[2] } 
+    src={ `http://localhost:3000/getfile/${projects.projectThumb.split("/")[1]}` } 
     class="h-60 w-full object-cover" 
     alt="Thumbmail"/>
   </div>

@@ -1,0 +1,25 @@
+version: "3.9"
+
+services:
+  mysql:
+    image: mysql:latest
+    container_name: mysql_server
+    ports:
+      - "3306:3306"
+    environment:
+      MYSQL_ROOT_PASSWORD: Nourddin1324!
+      MYSQL_USER: faouzi
+      MYSQL_PASSWORD: Nourddin1324!
+      MYSQL_ROOT_HOST: '%'
+    networks:
+      - common-net
+
+  web:
+    build: .
+    ports:
+      - "3000:3000"
+    networks:
+      - common-net
+
+networks:
+  common-net: {}

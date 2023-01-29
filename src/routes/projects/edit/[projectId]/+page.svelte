@@ -20,7 +20,7 @@
     console.log(saving);
   };
 
-  let cur_project = '/' + currentProject.projectThumb.split("/")[2];
+  let cur_project = '/' + currentProject.projectThumb.split("/")[1];
 
   const to_blob = () => {
     const fileReader = new FileReader();
@@ -31,6 +31,8 @@
      currentProject.projectThumb =  e.target?.result.split(",")[1];
     }
   }
+
+  $: console.log(currentProject.projectName);
   
 
   const openImageSelect = () => {
@@ -49,7 +51,7 @@
   <div class="w-full flex items-center relative flex-col ">
   <input type="file" accept="image/png, image/jpg" class="hidden" bind:files={ currentProject.projectThumb }  id="openFile" on:change={ to_blob }/>
     <img
-      src={`${ cur_project }`}
+      src={`http://localhost:3000/getfile${ cur_project }`}
       class="w-full aspect-square h-52 object-cover"
       on:click={ openImageSelect }
     />

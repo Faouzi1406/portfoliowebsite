@@ -32,7 +32,7 @@ export const POST = async (event:any) => {
     return new Response("unauthorized")
   }
 
-  writeFileSync(`static/${ repoForm.projectName.split("/")[1] }.jpg`, repoForm.projectThumb, 'base64' );
+  writeFileSync(`client/${ repoForm.projectName.split("/")[1] }.jpg`, repoForm.projectThumb, 'base64' );
   
   const repoData:RepoInformation = {
     projectName:    repoForm.projectName,
@@ -82,20 +82,28 @@ export const PUT = async (event:any) => {
     return new Response("unauthorized")
   }
 
-  console.log(repoForm.projectThumb);
+  const sendFile = await fetch("http://localhost:3000/uploadFile", {
+    method:'POST',
+    body: JSON.stringify({
+      "FileName": `${ repoForm.projectName.split("/")[1] }.jpg`,
+      "FileBlob": repoForm.projectThumb
+    }),
+    headers: {
+      'Content-Type': 'application/json'
+    }
+  });
 
-  writeFileSync(`static/${ repoForm.projectName.split("/")[1] }.jpg`, repoForm.projectThumb, 'base64' );
+
+  console.log(await sendFile.json());
   
   const repoData = {
     projectId:      repoForm.id,
     projectName:    repoForm.projectName,
     projectAvatar:  repoForm.projectAvatar,
     projectDesc:    repoForm.projectDesc,
-    projectThumb:   `static/${ repoForm.projectName }.jpg`,
+    projectThumb:   `${ repoForm.projectName }.jpg`,
     readMe:         repoForm.readMe
   }
-
-  console.log(repoData);
 
   // Push to database
   const prisma = new PrismaClient();

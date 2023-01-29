@@ -35,7 +35,6 @@
     "daisyui": "^2.46.1",
     "highlight.js": "^11.7.0",
     "sib-api-v3-sdk": "^8.5.0",
-    "svelte-adapter-bun": "^0.4.2",
     "svelte-forms": "^2.3.1",
     "svelte-markdown": "^0.2.3",
     "uuid": "^9.0.0"
