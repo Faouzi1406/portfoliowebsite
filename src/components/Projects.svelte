@@ -1,5 +1,6 @@
 <script lang="ts">
   export let projects:any;
+  import { PUBLIC_IMAGE_ROUTE } from "$env/static/public";
 
   const toDate = (date:Date) => {
     let month = date.getUTCMonth() +1;
@@ -18,7 +19,7 @@
 <div class="border rounded-md w-96 h-96 shadow grid dark:text-white">
   <div>
     <img 
-    src={ `http://localhost:3000/getfile/${projects.projectThumb.split("/")[1]}` } 
+    src={ `${ PUBLIC_IMAGE_ROUTE }/${projects.projectThumb.split("/")[1]}` } 
     class="h-60 w-full object-cover" 
     alt="Thumbmail"/>
   </div>

@@ -3,7 +3,7 @@ import { writeFileSync } from 'fs';
 import type { RepoInformation } from 'src/types/RepoTypes';
 import { Github } from '../../../classes/github/githubClass';
 import { AuthUserSession } from '../../../classes/auth/authUser';
-import { SECRET_FILE_KEY } from '$env/static/private';
+import { SECRET_FILE_KEY, SECRET_IMAGE_UPLOAD } from '$env/static/private';
 
 export const GET = async () => {
   const github = new Github(); 
@@ -33,9 +33,7 @@ export const POST = async (event:any) => {
     return new Response("unauthorized")
   }
 
-  console.log(SECRET_FILE_KEY);
-
-   const sendFile = await fetch("http://localhost:3000/uploadFile", {
+   const sendFile = await fetch(`http://191.96.53.197:3000/uploadFile`, {
     method:'POST',
     body: JSON.stringify({
       "FileName": `${ repoForm.projectName.split("/")[1] }.jpg`,
@@ -97,7 +95,8 @@ export const PUT = async (event:any) => {
     return new Response("unauthorized")
   }
 
-  const sendFile = await fetch("http://localhost:3000/uploadFile", {
+  console.log(SECRET_IMAGE_UPLOAD);
+  const sendFile = await fetch(`http://191.96.53.197:3000/uploadFile`, {
     method:'POST',
     body: JSON.stringify({
       "FileName": `${ repoForm.projectName.split("/")[1] }.jpg`,

@@ -45,8 +45,9 @@ export const POST  = async (event) => {
         params: {
             role: 'Wowwwww',
         },
-    }).catch( e => {isOk=false}
+    }).catch( e => {isOk=false; console.log(e)}
   );
+
 
   return new Response( 
       JSON.stringify(

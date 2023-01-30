@@ -3,6 +3,7 @@
   export let data: any;
   const user = data.user;
   let currentProject = data.currentProject;
+  import { PUBLIC_IMAGE_ROUTE } from "$env/static/public";
 
   const save = async () => {
     let saving = await fetch("/adminpage/gitApi", {
@@ -55,7 +56,7 @@
   <input type="file" accept="image/png, image/jpg" class="hidden" bind:files={ currentProject.projectThumb }  id="openFile" on:change={ to_blob }/>
     {#if blob == null}
     <img
-      src={`http://localhost:3000/getfile${ cur_project }`}
+      src={`${PUBLIC_IMAGE_ROUTE}${ cur_project }`}
       class="w-full aspect-square h-52 object-cover"
       on:click={ openImageSelect }
     />

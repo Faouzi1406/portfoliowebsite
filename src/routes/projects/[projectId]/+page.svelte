@@ -1,6 +1,7 @@
 <script>
   import Navbar from "../../../components/Navbar.svelte";
   import SvelteMarkdown from "svelte-markdown";
+  import { PUBLIC_IMAGE_ROUTE } from "$env/static/public"; 
 
   export let data;
   const user = data.user;
@@ -36,7 +37,7 @@
   <article class="sm:w-full lg:w-2/3 md:w-3/3 border-x">
     <div class="relative">
       <img
-        src={`http://localhost:3000/getfile/${projects.projectThumb.split("/")[1]}`}
+        src={`${ PUBLIC_IMAGE_ROUTE }/${projects.projectThumb.split("/")[1]}`}
         class="w-full h-[500px] object-cover"
         alt="Thumbmail"
       />
